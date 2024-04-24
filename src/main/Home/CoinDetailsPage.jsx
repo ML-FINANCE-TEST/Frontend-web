@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import TypewriterEffect from "./TypewriterEffect";
-import SparklineGraph from "./SparkLineGraph";
 
 const CoinDetailsPage = () => {
   const { state } = useLocation();

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import dayjs from "dayjs";
 import { useDispatch } from "react-redux";
-import { fetchCoins, fetchOlhc, fetchOlhcEth } from "../../redux/coinsSlice";
+import { fetchOlhcEth } from "../../redux/coinsSlice";
 
 const ApexEth = () => {
   const [olhcState, setOlhcState] = useState([]);

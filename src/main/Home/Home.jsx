@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { overflowLogos } from "./Logo";
 import "./home.css";
 import { useDispatch } from "react-redux";
 import { fetchCoins, fetchOlhc } from "../../redux/coinsSlice";
