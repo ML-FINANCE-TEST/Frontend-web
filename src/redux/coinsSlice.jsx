@@ -23,7 +23,9 @@ const initialState = {
 
 export const fetchCoins = createAsyncThunk("auth/fetchCoins", async () => {
   try {
-    const response = await axios.get("https://server-dbs5.onrender.com");
+    const response = await axios.get(
+      "https://server-dbs5.onrender.com/api/allcoins"
+    );
     //console.log(response, "Registration Response");
     return response?.data;
   } catch (error) {
