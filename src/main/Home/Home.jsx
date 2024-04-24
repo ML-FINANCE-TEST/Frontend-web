@@ -184,12 +184,12 @@ const Home = () => {
                   style={{ backgroundColor: "#ADFA25" }}
                 ></div>
                 <button
-                  onClick={() => navigate("/upload")}
+                  onClick={() => navigate("/coinlist")}
                   className="btn-auth"
                   style={{ marginTop: -14 }}
                   type="submit"
                 >
-                  Create an Account
+                 View Coins
                 </button>
               </div>
             </div>
@@ -450,7 +450,7 @@ const Home = () => {
                 style={{ backgroundColor: "#045444" }}
               ></div>
               <button
-                onClick={() => navigate("/upload")}
+                onClick={() => navigate("/coinlist")}
                 className="btn-auth"
                 style={{
                   marginTop: -14,
@@ -459,7 +459,7 @@ const Home = () => {
                 }}
                 type="submit"
               >
-                Create Account
+          View Coins
               </button>
             </div>
           </div>
