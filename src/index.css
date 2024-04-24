@@ -1,0 +1,246 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+ */
+ @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz@9..40&display=swap");
+ :root {
+   --font-family: "Dm Sans", sans-serif;
+   padding: 0;
+   margin: 0;
+ }
+ 
+ :root {
+   --darkOrange: #045444;
+   /* --darkOrange: #ff5f05; */
+   --primaryOrange: #045444;
+   --darkBlue: #010811;
+   --lightBlue: #3586ff;
+   --lightOrange: #fef4ea;
+   --mainWhite: #ffffff;
+   --lightWhite: #f4f4f4;
+   --mainBlack: #000000;
+   --lightBlack: #121212;
+   --mainGray: #666666;
+ }
+ 
+ body {
+   padding: 0;
+   margin: 0;
+   font-family: var(--font-family);
+ }
+ button {
+   cursor: pointer;
+ }
+ 
+ .save-reassign {
+   border: 0.6px solid #808080;
+   padding: 12px 32px;
+   border-radius: 24px;
+   margin-bottom: -24px;
+   margin-top: 24px;
+   color: #808080;
+   font-size: 14px;
+   cursor: pointer;
+ }
+ 
+ .save-reassign:hover{
+   border: 0.6px solid var(--darkOrange);
+   padding: 12px 32px;
+   border-radius: 24px;
+   margin-bottom: -24px;
+   margin-top: 24px;
+   color: #fff;
+   font-size: 14px;
+   cursor: pointer;
+   background-color: var(--darkOrange);
+ }
+
+ /* Auth.css */
+
+.input-field {
+  width: 80%;
+  padding: 14px;
+  margin-bottom: 2.5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: var(--fontFamily);
+  border-radius: 8px;
+}
+
+.err-field {
+  color: red;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.btn-auth {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #045444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: -124px;
+  height: 50px;
+  width: 200px;
+  font-family: var(--fontFamily);
+}
+
+.div-btn-auth {
+  background-color: #021548;
+  width: 200px;
+  height: 50px;
+  margin-bottom: -48px;
+  margin-left: 16px;
+  border-radius: 4px;
+}
+
+.auth-div-p {
+  font-size: 14px;
+  color: #808080;
+  margin: 0px;
+  padding-bottom: 48px;
+}
+.btn-auth:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+} /* Auth.css */
+.auth-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.div-input {
+  margin-bottom: 32px;
+}
+.logo-img {
+  height: 100vh;
+  width: 100%; /* Adjust size as needed */
+}
+
+.auth-div-div {
+  width: 50%; /* Adjust width as needed */
+}
+
+@media screen and (max-width: 768px) {
+  .auth-div {
+    flex-direction: column-reverse;
+  }
+
+  .logo-img {
+    display: none; /* Hide image on mobile view */
+  }
+
+  .auth-div-div {
+    width: 100%; /* Full width on mobile view */
+  }
+}
+
+.auth-div-div {
+  margin-left: 20px; /* Adjust margin as needed */
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+}
+
+.navbar-left {
+  flex: 1;
+  margin-left: 16px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.upload-btn {
+  background-color: #045444;
+  padding: 14px 24px;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+}
+
+.nav-items {
+  list-style-type: none;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 12px;
+}
+
+.nav-item {
+  cursor: pointer;
+}
+
+.profile-container {
+  margin-right: 1rem;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.menu-toggle {
+  display: none; /* Hide by default */
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: none; /* Hide by default */
+  position: absolute;
+  top: 60px;
+  right: 0%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+}
+
+.mobile-nav-items {
+  list-style-type: none;
+  gap: 48px;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+
+/* Media Query for Mobile View */
+@media (max-width: 768px) {
+  .navbar-right {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .nav-items {
+    display: none; /* Hide navigation items */
+  }
+
+  .menu-toggle {
+    margin-right: 12px;
+    background-color: #04544425;
+    padding: 12px;
+    border-radius: 48px;
+    width: 24px;
+    height: 24px;
+    align-items: center;
+    justify-content: center;
+    color: #045444;
+    display: flex; /* Display burger icon */
+  }
+
+  .mobile-menu {
+    width: 100vw;
+    display: block;
+    transition: 0.3s;
+  }
+}
