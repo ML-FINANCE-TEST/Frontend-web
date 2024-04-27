@@ -37,7 +37,7 @@ export const fetchCoins = createAsyncThunk("auth/fetchCoins", async () => {
 export const fetchOlhc = createAsyncThunk("auth/fetchOlhc", async (params) => {
   try {
     const response = await axios.get(
-      `http://localhost:3001/api/olhc/${params}`
+      `https://server-dbs5.onrender.com/api/olhc/${params}`
     );
     return response?.data;
   } catch (error) {
@@ -50,7 +50,7 @@ export const fetchOlhcEth = createAsyncThunk(
   async (params) => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/olhc/${params}`
+        `https://server-dbs5.onrender.com/api/olhc/${params}`
       );
       return response?.data;
     } catch (error) {
@@ -58,6 +58,17 @@ export const fetchOlhcEth = createAsyncThunk(
     }
   }
 );
+
+export const fearFetch = createAsyncThunk("auth/fearFetch", async (params) => {
+  try {
+    const response = await axios.get(
+      `https://server-dbs5.onrender.com/api/olhc/${params}`
+    );
+    return response?.data;
+  } catch (error) {
+    return error?.response?.status;
+  }
+});
 
 export const coinsSlice = createSlice({
   name: "coins",
@@ -73,6 +84,18 @@ export const coinsSlice = createSlice({
         state.coins = action.payload;
       })
       .addCase(fetchCoins.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      });
+    builder
+      .addCase(fearFetch.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fearFetch.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.coins = action.payload;
+      })
+      .addCase(fearFetch.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })
