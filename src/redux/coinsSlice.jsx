@@ -70,6 +70,18 @@ export const fearFetch = createAsyncThunk("auth/fearFetch", async (params) => {
   }
 });
 
+export const validate = createAsyncThunk("auth/validate", async (params, coin) => {
+  try {
+    console.log(params, "paramsparams");
+    const response = await axios.get(
+      `https://server-dbs5.onrender.com/api/validater/${params?.coin}/${params?.params}`
+    );
+    return response?.data;
+  } catch (error) {
+    return error?.response?.status;
+  }
+});
+
 export const coinsSlice = createSlice({
   name: "coins",
   initialState,
@@ -84,6 +96,18 @@ export const coinsSlice = createSlice({
         state.coins = action.payload;
       })
       .addCase(fetchCoins.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      });
+    builder
+      .addCase(validate.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(validate.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.coins = action.payload;
+      })
+      .addCase(validate.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });

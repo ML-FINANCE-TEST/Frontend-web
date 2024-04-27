@@ -24,6 +24,9 @@ const Navbar = () => {
           <li className="nav-item" onClick={() => navigate("/coinlist")}>
             All Tokens
           </li>
+          <li className="nav-item" onClick={() => navigate("/validator")}>
+            Fraud Check Wallet address
+          </li>
         </ul>
 
         <div className="menu-toggle" onClick={toggleMobileMenu}>
@@ -38,6 +41,9 @@ const Navbar = () => {
             </li>
             <li className="nav-item" onClick={() => navigate("/coinlist")}>
               All Tokens
+            </li>
+            <li className="nav-item" onClick={() => navigate("/validator")}>
+              Fraud Check Wallet address
             </li>
           </ul>
         </div>
