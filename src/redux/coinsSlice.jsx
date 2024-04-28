@@ -59,10 +59,22 @@ export const fetchOlhcEth = createAsyncThunk(
   }
 );
 
+export const sentimentFetch = createAsyncThunk("auth/sentimentFetch", async (params) => {
+  try {
+    const response = await axios.get(
+      `https://server-dbs5.onrender.com/api/ethereum-sentiments`
+    );
+    return response?.data;
+  } catch (error) {
+    return error?.response?.status;
+  }
+});
+
+
 export const fearFetch = createAsyncThunk("auth/fearFetch", async (params) => {
   try {
     const response = await axios.get(
-      `https://server-dbs5.onrender.com/api/olhc/${params}`
+      `https://server-dbs5.onrender.com/api/fear-and-greed-index`
     );
     return response?.data;
   } catch (error) {
