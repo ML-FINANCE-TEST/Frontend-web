@@ -1,39 +1,81 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import * as tf from "@tensorflow/tfjs";
 import "./home.css";
 import { useDispatch } from "react-redux";
-import { fetchCoins, fetchOlhc } from "../../redux/coinsSlice";
 
 const AllTokens = () => {
-  const [coinsState, setCoinsState] = useState([]); // Import useState from React
+  const [coinsState, setCoinsState] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
-  useEffect(() => {
-    dispatch(fetchCoins())
-      .then((response) => {
-        setCoinsState(response.payload);
-        console.log(response.payload, "response.payload");
-      })
-      .catch((error) => {
-        console.error("Error fetching coins:", error);
-      });
-  }, [dispatch]);
+  const [predictionResults, setPredictionResults] = useState([]);
 
-  // Function to navigate to CoinDetailsPage
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.request({
+        method: "GET",
+        url: "https://coinranking1.p.rapidapi.com/coins",
+        headers: {
+          "X-RapidAPI-Key":
+            "c091a4e18dmsh080c2384c7f4c47p1bafcejsn01decb6ed9be",
+          "X-RapidAPI-Host": "coinranking1.p.rapidapi.com",
+        },
+        params: {
+          // Add any additional parameters if needed
+        },
+      });
+      const fetchedCoinData = response.data.data.coins;
+      setCoinsState(fetchedCoinData);
+      console.log(fetchedCoinData, "fetchedCoinData");
+
+      // Prepare data for model training
+      const prices = fetchedCoinData.map((coin) => parseFloat(coin.price)); // Get current prices of all coins
+      const predictions = [];
+
+      // Loop through each coin's current price and predict its price in the next 5 years
+      for (let i = 0; i < prices.length; i++) {
+        const model = tf.sequential();
+        model.add(
+          tf.layers.dense({ units: 32, activation: "relu", inputShape: [1] })
+        );
+        model.add(tf.layers.dense({ units: 64, activation: "relu" }));
+        model.add(tf.layers.dense({ units: 1 }));
+        model.compile({ loss: "meanSquaredError", optimizer: "adam" });
+        const xs = [prices[i]];
+        const ys = [prices[i] * 5]; // Making a bullish prediction by multiplying the current price by a factor
+        const xsTensor = tf.tensor(xs);
+        const ysTensor = tf.tensor(ys);
+        await model.fit(xsTensor, ysTensor, { epochs: 50 });
+        const prediction = model.predict(tf.tensor2d([xs[0]], [1, 1]));
+        const predictionValue = prediction.dataSync()[0];
+        predictions.push(bullishPrediction(predictionValue));
+      }
+
+      setPredictionResults(predictions);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  const bullishPrediction = (value) => {
+    // Multiply the prediction value by 3 to make it more bullish
+    return value * 3;
+  };
+
   const handleCoinClick = (coin) => {
-    navigate(`/coins/${coin?.uuid}`, { state: { coin } }); // Pass coin as state
+    navigate(`/coins/${coin?.uuid}`, { state: { coin } });
   };
 
   const getColor = (change) => {
     return change < 0 ? "red" : "green";
   };
-  //const [rowColor, setRowColor] = useState("white");
-  // const handleRowColorChange = () => {
-  //   setRowColor((prevColor) =>
-  //     prevColor === "white" ? "lightgreen" : "white"
-  //   );
-  // };
+
   const CoinDetails = ({ coin }) => (
     <tr style={{ cursor: "pointer" }} onClick={() => handleCoinClick(coin)}>
       <td>
@@ -66,7 +108,7 @@ const AllTokens = () => {
     </tr>
   );
 
-  const filteredCoins = coinsState?.data?.coins
+  const filteredCoins = coinsState
     ?.filter((coin) =>
       coin.name.toLowerCase().includes(searchQuery.toLowerCase())
     )
@@ -122,72 +164,6 @@ const AllTokens = () => {
           </tbody>
         </table>
       </div>
-
-      <section
-        style={{
-          minHeight: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "0 20px",
-        }}
-      >
-        <div style={{ textAlign: "center", color: "#fff" }}>
-          <h1
-            style={{
-              maxWidth: 600,
-              textAlign: "center",
-              fontSize: 48,
-              color: "#000",
-            }}
-          >
-            Get Started
-          </h1>
-          <p
-            style={{
-              maxWidth: 600,
-              textAlign: "center",
-              color: "#808080",
-              marginTop: -32,
-            }}
-          >
-            Stay ahead of the curve and elevate your cryptocurrency journey with
-            our Centralized Cryptocurrency API Hub. Join our community of crypto
-            enthusiasts, developers, and traders, and embark on a journey
-            towards financial empowerment and digital innovation. Welcome to the
-            future of finance – welcome to the Cryptocurrency API Central!
-          </p>
-
-          <div style={{ width: "100%", alignContent: "center" }}>
-            <div
-              style={{
-                marginTop: 32,
-                flexDirection: "column",
-                display: "flex",
-                alignItems: "center",
-                width: "100%",
-              }}
-            >
-              <div
-                className="div-btn-auth"
-                style={{ backgroundColor: "#045444" }}
-              ></div>
-              <button
-                onClick={() => navigate("/upload")}
-                className="btn-auth"
-                style={{
-                  marginTop: -14,
-                  backgroundColor: "#ADFA25",
-                  color: "#045444",
-                }}
-                type="submit"
-              >
-                Create Account
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
