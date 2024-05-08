@@ -199,7 +199,7 @@ const Home = () => {
         </div>
       </section>
 
-<FinanceQnAPage />
+{/* <FinanceQnAPage /> */}
       {/* <section style={{ marginTop: 160 }}>
         <h3 style={{ textAlign: "center", fontSize: 36, color: "#000" }}>
           Highlights
