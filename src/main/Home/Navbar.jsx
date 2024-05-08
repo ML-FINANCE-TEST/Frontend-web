@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { FaBars } from "react-icons/fa"; // Assuming you're using react-icons for the burger icon
+import { FaBars } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-
-  const navigate = useNavigate();
 
   return (
     <nav className="navbar" style={{ zIndex: 3 }}>
@@ -27,8 +26,29 @@ const Navbar = () => {
           <li className="nav-item" onClick={() => navigate("/all")}>
             All Tokens Predictions
           </li>
-          <li className="nav-item" onClick={() => navigate("/validator")}>
-            Fraud Check Wallet address
+          <li className="nav-item" onClick={() => navigate("/fear")}>
+            Fear and Greed
+          </li>
+          <li className="nav-item" onClick={() => navigate("/exchange")}>
+            Exchange Rates
+          </li>
+          <li className="nav-item" onClick={() => navigate("/converter")}>
+            Currency Converter
+          </li>
+          <li className="nav-item" onClick={() => navigate("/crypto")}>
+            Crypto
+          </li>
+          <li className="nav-item" onClick={() => navigate("/etf")}>
+            ETFs
+          </li>
+          <li className="nav-item" onClick={() => navigate("/mf")}>
+            Mutual Funds
+          </li>
+          <li className="nav-item" onClick={() => navigate("/indices")}>
+            Indices
+          </li>
+          <li className="nav-item" onClick={() => navigate("/metals")}>
+            Metals
           </li>
         </ul>
 
@@ -36,9 +56,13 @@ const Navbar = () => {
           <FaBars />
         </div>
       </div>
+
       {isMobileMenuOpen && (
-        <div className="mobile-menu">
-          <ul className="mobile-nav-items">
+        <div className="mobile-menu" style={{ overflowY: "scroll" }}>
+          <ul
+            className="mobile-nav-items"
+            style={{ maxHeight: "90vh", overflowY: "auto" }}
+          >
             <li className="nav-item" onClick={() => navigate("/")}>
               Home
             </li>
@@ -48,8 +72,29 @@ const Navbar = () => {
             <li className="nav-item" onClick={() => navigate("/all")}>
               All Tokens Predictions
             </li>
-            <li className="nav-item" onClick={() => navigate("/validator")}>
-              Fraud Check Wallet address
+            <li className="nav-item" onClick={() => navigate("/fear")}>
+              Fear and Greed
+            </li>
+            <li className="nav-item" onClick={() => navigate("/exchange")}>
+              Exchange Rates
+            </li>
+            <li className="nav-item" onClick={() => navigate("/converter")}>
+              Currency Converter
+            </li>
+            <li className="nav-item" onClick={() => navigate("/crypto")}>
+              Crypto
+            </li>
+            <li className="nav-item" onClick={() => navigate("/etf")}>
+              ETFs
+            </li>
+            <li className="nav-item" onClick={() => navigate("/mf")}>
+              Mutual Funds
+            </li>
+            <li className="nav-item" onClick={() => navigate("/indices")}>
+              Indices
+            </li>
+            <li className="nav-item" onClick={() => navigate("/metals")}>
+              Metals
             </li>
           </ul>
         </div>

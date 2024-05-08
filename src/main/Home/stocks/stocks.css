@@ -1,0 +1,27 @@
+.container {
+    margin: 20px;
+  }
+  
+  .stock-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .stock-table th, .stock-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .stock-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .stock-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .stock-table tbody tr:hover {
+    background-color: #ddd;
+  }
+  

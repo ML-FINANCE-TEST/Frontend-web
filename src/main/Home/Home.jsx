@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { fetchCoins, fetchOlhc } from "../../redux/coinsSlice";
 import Apex from "./ApexCharts";
 import ApexEth from "./ApexChartsEth";
+import FinanceQnAPage from "./stocks/Qna";
 
 const Home = () => {
   const products = [
@@ -150,8 +151,8 @@ const Home = () => {
                 color: "#fff",
               }}
             >
-              Centralized Cryptocurrency API Hub: Your Ultimate Destination for
-              Real-Time Cryptocurrency Data{" "}
+              Centralized Financial API Hub: Your Ultimate Destination for
+              Real-Time Financial Data
             </h1>
             <p
               style={{
@@ -161,12 +162,12 @@ const Home = () => {
                 color: "#fff",
               }}
             >
-              Stay ahead of the curve and elevate your cryptocurrency journey
-              with our Centralized Cryptocurrency API Hub. Join our community of
-              crypto enthusiasts, developers, and traders, and embark on a
-              journey towards financial empowerment and digital innovation.
-              Welcome to the future of finance – welcome to the Cryptocurrency
-              API Central!
+              Stay ahead of the curve and elevate your journey in the world of
+              finance with our Centralized Financial API Hub. Across stocks,
+              ETFs, mutual funds, indices, metals, and cryptocurrencies.
+              Together, let's embark on a journey towards financial empowerment
+              and digital innovation. Welcome to the future of finance – welcome
+              to the Financial API Central!
             </p>
 
             <div style={{ width: "100%", zIndex: 3, alignContent: "center" }}>
@@ -189,7 +190,7 @@ const Home = () => {
                   style={{ marginTop: -14 }}
                   type="submit"
                 >
-                 View Coins
+                  View Coins
                 </button>
               </div>
             </div>
@@ -198,7 +199,8 @@ const Home = () => {
         </div>
       </section>
 
-      <section style={{ marginTop: 160 }}>
+<FinanceQnAPage />
+      {/* <section style={{ marginTop: 160 }}>
         <h3 style={{ textAlign: "center", fontSize: 36, color: "#000" }}>
           Highlights
         </h3>
@@ -293,7 +295,7 @@ const Home = () => {
             </p>
           </div> */}
 
-          {/* <div style={{ width: "300px", margin: "10px", textAlign: "center" , backgroundColor: "#94FC0445"}
+      {/* <div style={{ width: "300px", margin: "10px", textAlign: "center" , backgroundColor: "#94FC0445"}
           padding: 16,
         border: 1.51px solid #121212`
     borderRadius: 12}>
@@ -305,9 +307,9 @@ const Home = () => {
             <p style={{ color: "#808080", fontSize: 16, marginTop: -36 }}>
               Total 24h Volume
             </p>
-          </div> */}
+          </div> 
         </div>
-      </section>
+      </section> */}
 
       {/* <section style={{ marginTop: 160 }}>
         <h3 style={{ textAlign: "center", fontSize: 36, color: "#000" }}>
@@ -398,9 +400,9 @@ const Home = () => {
           </tbody>
         </table>
       </div> */}
-      <Apex />
-      <ApexEth />
-      <section
+      {/* <Apex />
+      <ApexEth /> */}
+      {/* <section
         style={{
           minHeight: "100vh",
           display: "flex",
@@ -464,7 +466,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

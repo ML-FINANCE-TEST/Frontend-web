@@ -1,0 +1,25 @@
+.exchange-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .exchange-table th,
+  .exchange-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .exchange-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .exchange-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .exchange-table tbody tr:hover {
+    background-color: #ddd;
+  }
+  

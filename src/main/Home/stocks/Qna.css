@@ -1,0 +1,50 @@
+.qna-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .qna-title {
+    margin-bottom: 20px;
+  }
+  
+  .qna-input {
+    margin-bottom: 20px;
+  }
+  
+  .qna-textarea {
+    width: 100%;
+    height: 150px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .qna-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .qna-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .qna-error {
+    color: red;
+  }
+  
+  .qna-answer-title {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .qna-answer-text {
+    white-space: pre-line;
+  }
+  
